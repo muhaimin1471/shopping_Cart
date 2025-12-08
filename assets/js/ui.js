@@ -2,7 +2,7 @@ function renderProducts() {
   const container = document.getElementById("product-list");
   container.innerHTML = products.map(p => `
     <div class="bg-white p-4 rounded shadow">
-      <img src="${p.img}" class="mb-2">
+      <img src="${p.img}" class="product-image mb-2">
       <h3 class="font-bold">${p.name}</h3>
       <p>${p.desc}</p>
       <p class="font-semibold mt-2">৳${p.price}</p>
