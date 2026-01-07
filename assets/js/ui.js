@@ -25,14 +25,29 @@ function renderCart() {
     html += `
       <div class="flex justify-between border-b py-2">
         <span>${p.name} (৳${p.price})</span>
-        <input type="number" value="${qty}" min="1" onchange="updateQty(${id}, this.value)" class="border w-16 text-center">
+        <input
+          type="number"
+          value="${qty}"
+          min="1"
+          onchange="updateQty(${id}, this.value)"
+          class="border w-16 text-center"
+        >
       </div>
     `;
   });
 
   container.innerHTML = html || "Cart is empty";
-  document.getElementById("cart-total").innerText = "Total: ৳" + total;
+
+  let discountedTotal = total;
+
+  if (discountPercent > 0) {
+    discountedTotal = total - (total * discountPercent) / 100;
+  }
+
+  document.getElementById("cart-total").innerText =
+    `Total: ৳${discountedTotal}`;
 }
+
 
 function updateUI() {
   renderCart();
